@@ -1,0 +1,33 @@
+class Solution {
+    public int[][] flipAndInvertImage(int[][] image) {
+        int[][] copy = new int[image.length][image[0].length];
+        for (int row = 0; row < image.length; row++){
+            for (int col = 0; col < image[row].length; col++){
+                copy[row][col] = image[row][col];
+            }
+        }
+
+
+        for (int row = 0; row < image.length; row++) {
+            int n = image.length -1;
+            for (int col = 0; col < image[row].length; col++) {
+                image[row][col] = copy[row][n];
+                n--;
+            }
+        }
+        //inverting
+        for (int row = 0; row < image.length; row++) {
+            
+            for (int col = 0; col < image[row].length; col++) {
+                if (image [row][col] == 0) {
+                    image[row][col] = 1;
+                }else {
+                    image[row][col] = 0;
+                }
+                
+            }
+        }
+
+        return image;
+    }
+}
