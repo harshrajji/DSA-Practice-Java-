@@ -1,0 +1,32 @@
+class Solution {
+    public int oddCells(int m, int n, int[][] indices) {
+        int [][] image = new int[m][n];
+        
+        for(int i = 0; i < indices.length; i++){
+            int temp = indices[i][0];
+            for(int j = 0; j < image[temp].length; j++){
+               
+                image[temp][j] +=1;
+            }
+            
+        }
+
+        for(int i = 0; i < indices.length; i++){
+            int temp = indices[i][1];
+            for(int j = 0; j < image.length; j++){
+               
+                image[j][temp] +=1;
+            }
+            
+        }
+        int count = 0;
+        for (int row = 0; row < image.length; row++){
+            for (int col = 0; col < image[row].length; col++){
+                if(image[row][col] % 2 != 0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
