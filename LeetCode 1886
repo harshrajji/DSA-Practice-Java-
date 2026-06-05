@@ -1,0 +1,35 @@
+class Solution {
+    public boolean findRotation(int[][] mat, int[][] target) {
+        int n = mat.length;
+        int [][] temp = new int [n][n];
+        for (int row = 0; row < temp.length; row++){
+            for (int col = 0; col < temp[row].length; col++){
+                temp[row][col] = mat[row][col];
+            }
+        }
+        for(int hcv = 0; hcv < 4; hcv++){
+            if(Arrays.deepEquals(temp, target)){
+                return true;
+            }
+            int [][] temp2 = new int [n][n];
+            for (int row = 0; row < temp2.length; row++){
+                for (int col = 0; col < temp2[row].length; col++){
+                    temp2[row][col] = temp[row][col];
+                }
+            }
+            int s = n -1;
+            for (int row = 0; row < temp.length; row++){
+                for (int col = 0; col < temp[row].length; col++){
+                    temp[col][s] = temp2[row][col];
+                }
+                s--;
+            }
+
+            if(Arrays.deepEquals(temp, target)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
