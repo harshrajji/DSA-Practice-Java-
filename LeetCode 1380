@@ -1,0 +1,39 @@
+class Solution {
+    public List<Integer> luckyNumbers(int[][] matrix) {
+        int rln = matrix.length;
+        
+        ArrayList<Integer> leastofrow = new ArrayList<>(rln);
+        ArrayList<Integer> grtofcol = new ArrayList<>(rln);
+        ArrayList<Integer> lucky = new ArrayList<>(rln);
+        for (int row = 0; row < matrix.length; row++){
+            int least = Integer.MAX_VALUE;
+            for (int col = 0; col < matrix[row].length; col++){
+                if(least > matrix[row][col]){
+                    least = matrix[row][col];
+                }
+            }
+            leastofrow.add(least);
+
+        }
+
+        for (int row = 0; row < matrix[0].length; row++){
+            int grt = Integer.MIN_VALUE;
+            for (int col = 0; col < matrix.length; col++){
+                if(grt < matrix[col][row]){
+                    grt = matrix[col][row];
+                }
+            }
+            grtofcol.add(grt);
+
+        }
+        for (int row = 0; row < matrix.length; row++){
+            for (int col = 0; col < matrix[row].length; col++){
+                if (leastofrow.get(row).equals(grtofcol.get(col))){
+                    lucky.add(leastofrow.get(row));
+                }
+            }
+        }
+            
+        return lucky;
+    } 
+}
