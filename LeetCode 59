@@ -1,0 +1,40 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int [][] matrix = new int [n][n];
+        int num = 1;
+        int ro =0;
+        int co = 0;
+        int top = 0;
+        int left = 0;
+        int bottom = n -1;
+        int right = n- 1;
+        while(top <= bottom && left <= right){
+            for(co = left; co <= right; co++){
+                matrix[top][co] = num;
+                num++;
+            }
+            top++;
+            for(ro = top; ro <= bottom; ro++){
+                co = n- 1;
+                matrix[ro][right] = num;
+                num++;
+            }
+            right--;
+            if(top <= bottom){
+                for(co = right; co >= left; co--){
+                    matrix[bottom][co] = num;
+                    num++;
+                }
+                bottom--;
+            }
+            if(left <= right){
+                for(ro = bottom; ro >= top; ro--){
+                    matrix[ro][left] = num;
+                    num++;
+                }
+                left++;
+            }
+        }
+        return matrix;
+    }
+}
