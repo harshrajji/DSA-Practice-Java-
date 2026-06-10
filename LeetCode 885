@@ -1,0 +1,49 @@
+class Solution {
+    public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
+        int n = rows * cols;
+        int [][] matrix = new int [n][2];
+        int steps = 1;
+        int i = 0;
+        while(i < n){
+            //right
+            for(int col = 0; col < steps; col++){
+                if(rStart >= 0 && rStart < rows && cStart >= 0 && cStart < cols){
+                    matrix[i][0] = rStart;
+                    matrix[i][1] = cStart;
+                    i++;
+                }
+                cStart++;
+            }
+            //down
+            for(int row = steps; row > 0; row--){
+                if(rStart >= 0 && rStart < rows && cStart >= 0 && cStart < cols){
+                    matrix[i][0] = rStart;
+                    matrix[i][1] = cStart;
+                    i++;
+                }
+                rStart++;
+            }
+            steps++;
+            //left
+            for(int col = steps; col > 0; col--){
+                if(rStart >= 0 && rStart < rows && cStart >= 0 && cStart < cols){
+                    matrix[i][0] = rStart;
+                    matrix[i][1] = cStart;
+                    i++;
+                }
+                cStart--;
+            }
+            //upj
+            for(int row = 0; row < steps; row++){
+                if(rStart >= 0 && rStart < rows && cStart >= 0 && cStart < cols){
+                    matrix[i][0] = rStart;
+                    matrix[i][1] = cStart;
+                    i++;
+                }
+                rStart--;;
+            }
+            steps++;
+        }
+        return matrix;    
+    }
+}
