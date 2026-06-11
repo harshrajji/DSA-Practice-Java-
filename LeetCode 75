@@ -1,0 +1,35 @@
+class Solution {
+    public void sortColors(int[] nums) {
+        sorted(nums);
+    }
+    int[] sorted(int [] nums){
+        int start = 0;
+        int n = nums.length;
+        int[] dup = new int[n];
+        for(int i = 0; i < n; i++){
+            dup[i] = nums[i];
+        }
+        for(int i = 0; i < n; i++){
+            int current = dup[i];
+            if(current == 0){
+                nums[start] = current;
+                start++;
+            }
+        }
+        for(int i = 0; i < n; i++){
+            int current = dup[i];
+            if(current == 1){
+                nums[start] = current;
+                start++;
+            }   
+        }
+        for(int i = 0; i < n; i++){
+            int current = dup[i];
+            if(current == 2){
+                nums[start] = current;
+                start++;
+            }   
+        }
+        return nums;
+    }
+}
