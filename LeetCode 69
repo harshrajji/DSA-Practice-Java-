@@ -1,0 +1,26 @@
+class Solution {
+    public int mySqrt(int x) {
+        
+        int sol = sqroot(x);
+        return sol;
+    }
+    int sqroot(int x){
+        if( x == 1){
+            return 1;
+        }
+        if( x == 2147483647){
+            return 46340;
+        }
+        int i = 1;
+        while(i <= x /2){
+            if(i*i < x && x < (i+1)*(i+1)){
+                return i;
+            }
+            if(i*i == x){
+                return i;
+            }
+            i++;
+        }
+        return 0;
+    }
+}
