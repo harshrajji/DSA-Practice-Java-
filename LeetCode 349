@@ -1,0 +1,70 @@
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        
+        HashSet<Integer> lu = new HashSet<>();
+        for (int num : nums1) {
+            lu.add(num);
+        }
+        
+        HashSet<Integer> re = new HashSet<>();
+        for (int num : nums2) {
+            if (lu.contains(num)) {
+                re.add(num);
+            }
+        }
+        
+        int [] ans = new int[re.size()];
+        int i = 0;
+        for (int num : re) {
+            ans[i++] = num;
+        }
+        return ans;
+        
+        
+        
+        // ArrayList<Integer> intr = new ArrayList<>(5);
+
+        // int n1 = nums1.length;
+        // Arrays.sort(nums2);
+        // Arrays.sort(nums1);
+        // for(int i = 0; i < n1; i++){
+        //     if( i > 0 && nums1[i] == nums1[i-1]){
+        //         continue;
+        //     }
+        //     int start = 0;
+        
+        //     int end = nums2.length - 1;
+        
+        //     while (start <= end) {// = lagana yaad dilaya gpt
+        
+        //         int mid = start + (end - start) / 2;
+        
+        //         if (nums1[i] < nums2[mid]) {
+        
+        //             end = mid -1;
+        
+        //         }else if (nums1[i] > nums2[mid]) {
+        
+        //             start = mid +1;
+        
+        //         }else{
+        
+        //             intr.add(nums1[i]);
+        //             break;
+        
+        //         }
+        
+        //     }
+        
+        // }
+        
+        // int[] arr = new int[intr.size()];
+
+        
+        // for (int i = 0; i < intr.size(); i++) {
+        //     arr[i] = intr.get(i);
+        // }
+        
+        // return arr;
+    }
+}
