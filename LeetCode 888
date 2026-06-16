@@ -1,0 +1,33 @@
+class Solution {
+    public int[] fairCandySwap(int[] aliceSizes, int[] bobSizes) {
+        Arrays.sort(aliceSizes);
+        Arrays.sort(bobSizes);
+        int n = aliceSizes.length;
+        int m = bobSizes.length;
+        int sum1 = 0;
+        int sum2 = 0;
+        for(int i = 0; i < n; i++){
+            sum1 += aliceSizes[i];
+        }
+        for(int j = 0; j < m; j++){
+            sum2 += bobSizes[j];
+        }
+        int av = (sum1 + sum2) / 2;
+        int e1 = 0;
+        int e2 = 0;
+        int eqn1 = -49;
+        int eqn2 = -85;
+        while(eqn1 != eqn2){
+            eqn1 = sum1 - aliceSizes[e1] + bobSizes[e2];
+            eqn2 = sum2 - bobSizes[e2] + aliceSizes[e1];
+            if(eqn1 > eqn2){
+                e1++;
+            }else if(eqn1 < eqn2){
+                e2++;
+            }else{
+                return new int[] {aliceSizes[e1], bobSizes[e2]};
+            }
+        }
+        return new int[] {aliceSizes[e1], bobSizes[e2]};
+    }
+}
