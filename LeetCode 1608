@@ -1,0 +1,19 @@
+class Solution {
+    public int specialArray(int[] nums) {
+        for (int i = 1; i <= nums.length; i++) {
+            int acout = sparr(nums,i,0);
+            if(acout == i){
+                return i;
+            }
+        }
+        return - 1;
+    }
+    int sparr(int[]nums, int i, int count){
+        for (int j : nums) {
+            if (j >= i) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
