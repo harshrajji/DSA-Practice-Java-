@@ -1,0 +1,48 @@
+class Solution {
+    public int minAbsoluteSumDiff(int[] nums1, int[] nums2) {
+        int max = Integer.MIN_VALUE;
+        int maxin = 0;
+        long sum = 0;
+        int[] cnums1 = new int[nums2.length];
+        for(int j = 0; j < nums2.length; j++){
+            cnums1[j] = nums1[j];
+        }
+        Arrays.sort(cnums1);
+        int maximumimp = 0;
+        for(int i = 0; i < nums1.length; i++){
+            int diff = Math.abs(nums1[i] - nums2[i]);
+            sum += diff;
+            int maximprovement = BinarySearch(cnums1,nums2, i, diff);
+            maximumimp = Math.max(maximprovement, maximumimp);
+            
+        }
+        if(sum == 0){
+            return 0;
+        }
+        
+        return (int)((sum - maximumimp) % 1000000007);
+
+    }
+    int BinarySearch(int[] cnums1, int[] nums2, int i, int diff){
+        int maximpro = 0;
+        int start = 0;
+        int end = cnums1.length - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            int diff1 = Math.abs(cnums1[mid] - nums2[i]);
+            int impro = diff - diff1;
+            if(impro > maximpro){
+                maximpro = impro;
+            }
+
+            if (cnums1[mid] < nums2[i]) {
+                start = mid +1;
+            }else if (cnums1[mid] > nums2[i]) {
+                end = mid -1;                
+            }else{
+                break;
+            }
+        }
+        return maximpro;
+    }
+}
