@@ -1,0 +1,31 @@
+class Solution {
+    public int thirdMax(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for(int num : nums){
+            set.add(num);
+        }
+        int n = nums.length;
+        long max = Integer.MIN_VALUE;
+        for(int i = 0; i < n; i++){
+            if(nums[i] > max){
+                max = nums[i];
+            }
+        }
+        if(set.size() < 3){
+            return (int) max;
+        }
+        long max2 = Integer.MIN_VALUE;
+        for(int j = 0; j < n; j++){
+            if(nums[j] > max2 && nums[j] < max){
+                max2 = nums[j];
+            }
+        }
+        long max3 = Integer.MIN_VALUE;
+        for(int l = 0; l < n; l++){
+            if(nums[l] > max3 && nums[l] < max2){
+                max3 = nums[l];
+            }
+        }
+        return (int) max3;
+    }
+}
