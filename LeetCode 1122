@@ -1,0 +1,34 @@
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        int[] ans = new int[arr1.length];
+        int e=0;
+        for(int i=0;i<arr2.length;i++){
+            for(int j = 0; j < arr1.length; j++){
+                if(arr2[i] == arr1[j]){
+                    ans[e] = arr1[j];
+                    arr1[j] = -1;
+                    e++;
+                }
+            }
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            int swap = 0;
+            for (int j = 1; j < arr1.length -i; j++) {
+                if(arr1[j] < arr1[j -1]){
+                    int temp = arr1[j];
+                    arr1[j] = arr1[j -1];
+                    arr1[j -1] = temp;
+                    swap++;
+                }
+            }
+            if(swap == 0){
+                break;
+            }
+        }
+        while(e<arr1.length){
+            ans[e] = arr1[e];
+            e++;
+        }
+        return ans;
+    }
+}
