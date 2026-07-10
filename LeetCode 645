@@ -1,0 +1,22 @@
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        int n = nums.length;
+        int mis = -1;
+        int dup = -1;
+        for (int i = 0; i < n; i++){
+            int index = Math.abs(nums[i]) -1;
+            if(nums[index] < 0){
+                dup = Math.abs(nums[i]);
+            }else{
+                nums[index] = -nums[index];
+            }
+        }
+        for(int j = 0; j < n; j++){
+            if(nums[j] > 0){
+                mis = j + 1;
+            }
+        }
+        return new int[] {dup, mis};
+    }
+}
