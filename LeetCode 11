@@ -1,0 +1,25 @@
+class Solution {
+    public int maxArea(int[] h) {
+        int maxcap =  0;
+        int i = 0;
+        int j = h.length - 1;
+        int area = 0;
+        while(i < j){
+            int dis = j - i;
+            if(h[i] < h[j]){
+                area = h[i]*dis;
+            }else{
+                area = h[j]*dis;
+            }
+            if(area > maxcap){
+                maxcap = area;
+            }
+            if(h[i] < h[j]){
+                i++;
+            }else{
+                j--;
+            }
+        }
+        return maxcap;
+    }
+}
