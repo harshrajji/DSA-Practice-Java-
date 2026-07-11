@@ -1,0 +1,28 @@
+class Solution {
+    public int removeElement(int[] nu, int val) {
+        int n = nu.length;
+        int ct = 0;
+        int i = 0;
+        int j = n - 1;
+        while(i <= j){
+            if(nu[i] == val && nu[j] != val){
+                int tem = nu[i];
+                nu[i] = nu[j];
+                nu[j] = tem;
+                i++;
+                j--;
+                ct++;
+            }else if(nu[i] != val && nu[j] == val){
+                i++;
+                j--;
+                ct++;
+            }else if(nu[i] == val && nu[j] == val){
+                j--;
+                ct++;
+            }else if(nu[i] != val && nu[j] != val){
+                i++;
+            }
+        }
+        return n - ct;
+    }
+}
