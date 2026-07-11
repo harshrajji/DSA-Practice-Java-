@@ -1,0 +1,19 @@
+class Solution {
+    public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        int[][] du = new int[n][n];
+        for(int i = 0; i< n; i++){
+            int r = n - 1;
+            for(int j = 0; j < n; j++){
+                du[i][j] = matrix[r][i];
+                r--;
+            }
+        }
+        for(int i = 0; i< n; i++){
+            for(int j = 0; j < n; j++){
+                matrix[i][j] = du[i][j];
+                
+            }
+        }
+    }
+}
