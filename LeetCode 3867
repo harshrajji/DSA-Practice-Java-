@@ -1,0 +1,37 @@
+class Solution {
+    public long gcdSum(int[] nums) {
+        int n = nums.length;
+        int max = 0;
+        int[] prefixGcd = new int[n];
+        for(int i = 0; i < n; i++){
+            int a = nums[i];
+            if(a > max){
+                max = a;
+            }
+            int b = max;
+            while(b % a != 0){
+                int rem = b%a;
+                b = a;
+                a =  rem;
+            }
+            prefixGcd[i] = a;
+        }
+        Arrays.sort(prefixGcd);
+        int i = 0;
+        int j = n -1;
+        long sum = 0;
+        while(i < j){
+            long a = prefixGcd[i];
+            long h = prefixGcd[j];
+            while(h % a != 0){
+                long rem = h%a;
+                h = a;
+                a = rem;
+            }
+            sum += (long) a;
+            j--;
+            i++;
+        }
+        return sum;
+    }
+}
