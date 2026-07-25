@@ -1,0 +1,31 @@
+class Solution {
+    public int maxProduct(int n) {
+        int max = 0;
+        int max1 = 0;
+        int temp = n;
+        int k = 0;
+        int maxin = 0;
+        while(n > 0){
+            int dig = n % 10;
+            n = n / 10;
+            if(dig > max){
+                max = dig;
+                maxin = k;
+            }
+            k++;
+        }
+        for(int j = 0; j < k; j++){
+            int dig = temp % 10;
+            temp = temp / 10;
+            if(j == maxin){
+                continue;
+            }
+            if(dig > max1){
+                max1 = dig;
+            }
+
+        }
+        int ans = max *max1;
+        return ans;
+    }
+}
