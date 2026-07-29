@@ -1,21 +1,17 @@
 class Solution {
     public boolean isPalindrome(int x) {
-
-        // Negative numbers and numbers ending with 0
-        // (except 0 itself) cannot be palindrome
-        if (x < 0 || (x % 10 == 0 && x != 0)) {
+        if(x < 0){
             return false;
         }
-
-        int reversed = 0;
-
-        while (x > reversed) {
-            reversed = reversed * 10 + x % 10;
+        int rev = 0;
+        int temp = x;
+        while(x > 0){
+            rev = rev * 10 + x % 10;
             x = x / 10;
         }
-
-        // For even digits: x == reversed
-        // For odd digits: x == reversed / 10
-        return x == reversed || x == reversed / 10;
+        if(rev == temp){
+            return true;
+        }
+        return false;
     }
 }
