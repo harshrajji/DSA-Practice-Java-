@@ -1,0 +1,13 @@
+class Solution {
+    public String sortSentence(String s) {
+        String[] arr = s.split(" ");
+        int n = arr.length;
+        String[] ans = new String[n];
+        for(String w : arr){
+            int z = w.charAt(w.length() -1) - '0';
+            ans[z - 1] = w.substring(0, w.length()-1);
+        }
+        s = String.join(" ", ans);
+        return s;
+    }
+}
