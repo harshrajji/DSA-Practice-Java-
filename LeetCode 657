@@ -1,0 +1,29 @@
+class Solution {
+    public boolean judgeCircle(String moves) {
+        int cR = 0;
+        int cL = 0;
+        int cU = 0;
+        int cD = 0;
+        for(char ch : moves.toCharArray()){
+            switch (ch) {
+                case 'R':
+                    cR++;
+                    break;
+                case 'L':
+                    cL++;
+                    break;
+                case 'U':
+                    cU++;
+                    break;
+                case 'D':
+                    cD++;
+                    break;
+                default:
+            }
+        }
+        if(cR == cL && cU == cD){
+            return true;
+        }
+        return false;
+    }
+}
