@@ -1,0 +1,22 @@
+class Solution {
+    public List<Integer> findMissingElements(int[] nums) {
+        int n = nums.length;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for(int num : nums){
+            max = Math.max(num, max);
+            min = Math.min(num, min);
+        }
+        int[] arr = new int[max +1];
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i : nums){
+            arr[i]++;
+        }
+        for(int j = min; j <= max; j++){
+            if(arr[j]==0){
+                ans.add(j);
+            }
+        }
+        return ans;
+    }
+}
