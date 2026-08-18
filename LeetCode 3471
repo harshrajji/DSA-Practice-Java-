@@ -1,0 +1,30 @@
+class Solution {
+    public int largestInteger(int[] nums, int k) {
+        int ans = -1;
+        int [] freq = new int[51];
+        int i = 0;
+        int j = k;
+        while(j <= nums.length){
+            HashSet <Integer> set = new HashSet<>();
+            for(int l = i; l < j; l++){
+                if(set.contains(nums[l])){
+                    continue;
+                }else{
+                    freq[nums[l]]++;
+                    set.add(nums[l]);
+                }
+            }
+            i++;
+            j++;
+        }
+        for(int nu : nums){
+            if(freq[nu] == 1){
+                int conte = nu;
+                if(conte > ans){
+                    ans =  conte;
+                }
+            }
+        }
+        return ans;
+    }
+}
