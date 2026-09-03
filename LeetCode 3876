@@ -1,0 +1,22 @@
+class Solution {
+    public boolean uniformArray(int[] nums1) {
+        int smo = Integer.MAX_VALUE;
+        int smi = Integer.MAX_VALUE;
+        for(int n : nums1){
+            if(n % 2 != 0 && n < smo){
+                smo = n;
+            }
+            if(n % 2 == 0 && n < smi){
+                smi = n;
+            }
+
+        }
+        if(smo == Integer.MAX_VALUE || smi == Integer.MAX_VALUE){
+            return true;
+        }
+        if(smo < smi){
+            return true;
+        }
+        return false;
+    }
+}
