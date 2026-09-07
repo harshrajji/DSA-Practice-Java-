@@ -1,0 +1,53 @@
+class Solution {
+    public int numWays(String s) {
+        int n = s.length();
+        int no1 = 0;
+        int MOD = 1_000_000_007;
+        for(char c : s.toCharArray()){
+            if(c == '1'){
+                no1++;
+            }
+        }
+        if(no1 == 0){
+            long ans = 0;
+            for(long i = n - 2; i >= 1; i--){
+                ans = (ans + i) % MOD;
+            }
+            return (int) ans;
+        }
+        if(no1 % 3 != 0){
+            return 0;
+        }
+        long each = no1 / 3;
+        long o = 0;
+        long[] ans = new long[2];
+        int x = 0;
+        int i = 0;
+        while(o != each){
+            if(s.charAt(i) == '1'){
+                o++;
+            }
+            i++;
+        }
+        o = 0;
+        while(s.charAt(i) != '1'){
+            x++;
+            i++;
+        }
+        ans[0] = x +1;
+        x = 0;
+        while(o != each){
+            if(s.charAt(i) == '1'){
+                o++;
+            }
+            i++;
+        }
+        while(s.charAt(i) != '1'){
+            x++;
+            i++;
+        }
+        ans[1] = x +1;
+        long solu = ans[0]*ans[1] % MOD;
+        return (int) solu;
+    }
+}
