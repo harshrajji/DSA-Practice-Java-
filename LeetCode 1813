@@ -1,0 +1,27 @@
+class Solution {
+    public boolean areSentencesSimilar(String sentence1, String sentence2) {
+        String[] s1 = sentence1.split(" ");
+        String[] s2 = sentence2.split(" ");
+        int prematch = 0;
+        int posmatch = 0;
+        int n = s1.length;
+        int p = s2.length;
+        int i = 0;
+        while(i < n && i < p && s1[i].equals(s2[i])){
+            prematch++;
+            i++;
+        }
+        int m = Math.min(n, p);
+        if(prematch == m) return true;
+        i--;
+        int h = n -1;
+        int k = p -1;
+        while(h > i && k > i && s1[h].equals(s2[k])){
+            posmatch++;
+            h--;
+            k--;
+        }
+        if(prematch + posmatch == m) return true;
+        return false;
+    }
+}
