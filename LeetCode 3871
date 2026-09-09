@@ -1,0 +1,21 @@
+class Solution {
+    public long countCommas(long n) {
+        long start = 1000;
+        long comma = 0;
+        long ans = 0;
+        while(start <= n){
+            comma++;
+            start *= 1000;
+        }
+        start /= 1000;
+        while(start >= 1000){
+            long range = n - start +1;
+            long add = range * comma;
+            ans = ans + add;
+            comma--;
+            n = n - range;
+            start /= 1000;
+        }
+        return ans;
+    }
+}
