@@ -1,3 +1,5 @@
+//Harsh Raj
+
 class Solution {
     public int findGCD(int[] nums) {
         int a = Integer.MAX_VALUE;
